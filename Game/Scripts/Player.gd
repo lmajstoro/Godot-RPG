@@ -9,7 +9,6 @@ const PLAYBACK = "parameters/playback"
 
 var velocity = Vector2.ZERO
 
-#with $ you access child nodes
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get(PLAYBACK)
@@ -23,15 +22,12 @@ func _physics_process(delta):
 	input_vector = input_vector.normalized()
 
 	if input_vector != Vector2.ZERO:
-		#Set blend position for idle via forwarding input vector
 		animationTree.set(IDLE_BLEND, input_vector)
-		#Set blend position for movement via forwarding input vector
 		animationTree.set(MOVEMENT_BLEND, input_vector)
-		#When moving, set state to Movement
 		animationState.travel("Movement")
+		
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
-		#When idling, set state to Idle
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 		
