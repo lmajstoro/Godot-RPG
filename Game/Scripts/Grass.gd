@@ -1,5 +1,7 @@
 extends Node2D
 
+const GDE_SCENE = "res://Scenes/GrassDestroyEffect.tscn"
+
 func _process(delta):
 	if Input.is_action_just_pressed("attack"):
 		_grassBehaviour()
@@ -8,7 +10,7 @@ func _process(delta):
 		
 func _grassBehaviour():
 	#Load and create instance of scene (destroy animation)
-	var GrassDestroyEffect = load("res://Scenes/GrassDestroyEffect.tscn")
+	var GrassDestroyEffect = load(GDE_SCENE)
 	var grassDestroyEffect = GrassDestroyEffect.instance()
 	#fetch main sceen (World)
 	var world = get_tree().current_scene
