@@ -34,9 +34,9 @@ func _physics_process(delta):
 		ROLL:
 			pass
 		ATTACK:
-			attack_state(delta)
+			attack_state()
 		SPECIAL_ATTACK:
-			special_attack_state(delta)
+			special_attack_state()
 	
 func move_state(delta):
 	var input_vector = Vector2.ZERO
@@ -62,11 +62,11 @@ func move_state(delta):
 	if Input.is_action_just_pressed("specialAttack"):
 		state = SPECIAL_ATTACK
 	
-func attack_state(delta):
+func attack_state():
 	velocity = Vector2.ZERO
 	animationState.travel("Attack")
 	
-func special_attack_state(delta):
+func special_attack_state():
 	velocity = Vector2.ZERO
 	animationState.travel("SpecialAttack")
 	
