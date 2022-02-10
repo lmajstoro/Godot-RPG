@@ -43,12 +43,9 @@ func move_state(delta):
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_vector = input_vector.normalized()
-
+	
 	if input_vector != Vector2.ZERO:
-		animationTree.set(IDLE_BLEND, input_vector)
-		animationTree.set(MOVEMENT_BLEND, input_vector)
-		animationTree.set(ATTACK_BLEND, input_vector)
-		animationTree.set(SPECIAL_ATTACK_BLEND, input_vector)
+		get_animation_trees(input_vector)
 		animationState.travel("Movement")
 		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
 	else:
@@ -73,4 +70,10 @@ func special_attack_state():
 #method added to end of animation (mehtod track)
 func attack_animation_finished():
 	state = MOVE
+
+func get_animation_trees(input_vector):
+	animationTree.set(IDLE_BLEND, input_vector)
+	animationTree.set(MOVEMENT_BLEND, input_vector)
+	animationTree.set(ATTACK_BLEND, input_vector)
+	animationTree.set(SPECIAL_ATTACK_BLEND, input_vector)
 
