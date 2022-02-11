@@ -23,7 +23,10 @@ var velocity = Vector2.ZERO
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get(PLAYBACK)
+
 func _ready():
+	var hitbox = self.get_node("HitboxPivot/SwordHitbox/CollisionShape2D")
+	hitbox.disabled = true
 	animationTree.active = true
 
 #execute one state at the time

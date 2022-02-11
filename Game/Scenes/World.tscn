@@ -522,7 +522,7 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 1, -65534, 0, 1, -6
 [node name="WorldYSort" type="YSort" parent="."]
 
 [node name="Player" parent="WorldYSort" instance=ExtResource( 2 )]
-position = Vector2( 11, 124 )
+position = Vector2( 12, 124 )
 
 [node name="Bushes" type="YSort" parent="WorldYSort"]
 
